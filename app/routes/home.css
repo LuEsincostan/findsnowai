@@ -9,3 +9,16 @@
   font-family: 'Segoe UI', Arial, sans-serif;
   background-blend-mode: overlay;
 }
+
+.welcome-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+  font-size: 0.95em;
+  color: #555;
+  background: rgba(255, 255, 255, 0.321);
+  z-index: 10;
+}

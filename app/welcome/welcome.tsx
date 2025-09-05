@@ -34,16 +34,37 @@ export function Welcome({ message }: { message: string }) {
         />
         <nav className="welcome-box">
           <p className="welcome-title">
-            Find Snow Challenge
+            Find Snow Challenge 2025/26
           </p>
           <p className="welcome-desc">
             You love long days on nordic skis? You are excited about trying out new tracks? We have just the right challenge for you this winter.<br /><br />
             How will it work?
           </p>
           <ol className="numbered-list">
-            <li>You connect your Strava account.</li>
-            <li>Go skiing! For the entire season, only your longest activity will count per skiing area.</li>
-            <li>Check back regularly to see where you are on the leaderboard.</li>
+            <li>
+              <span className="hex-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#05182bff" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
+                </svg>
+              </span>
+              Connect your Strava account.
+            </li>
+            <li>
+              <span className="hex-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#05182bff" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
+                </svg>
+              </span>
+              Go skiing! For the entire season, only your longest activity will count per skiing area.
+            </li>
+            <li>
+              <span className="hex-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#05182bff" strokeWidth="2" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
+                </svg>
+              </span>
+              Check back regularly to see where you are on the leaderboard.
+            </li>
           </ol>
           <p className="welcome-desc">
             Sign up below to get notified when we launch.
