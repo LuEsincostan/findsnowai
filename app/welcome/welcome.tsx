@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "./welcome.css";
 import logoDark from "./finsnowai_dark_txt.svg";
 import logoLight from "./finsnowai_light_txt.svg";
-import "./welcome.css";
 
 export function Welcome({ message }: { message: string }) {
   const [email, setEmail] = useState("");
@@ -10,7 +10,7 @@ export function Welcome({ message }: { message: string }) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus(null);
-    const res = await fetch("/api/subscribe", {
+    const res = await fetch("https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
@@ -21,63 +21,58 @@ export function Welcome({ message }: { message: string }) {
 
   return (
     <main className="welcome-main">
-      <div className="flex-1 flex flex-col items-center gap-4 min-h-0">
-        <header className="flex flex-col items-center gap-4">
-          <div className="w-[500px] max-w-[100vw] p-4">
-            <img
-              src={logoLight}
-              alt="React Router"
-              className="block w-full dark:hidden"
+      <div className="welcome-container">
+        <img
+          src={logoLight}
+          alt="FindSnowAI Logo"
+          className="logo-img light"
+        />
+        <img
+          src={logoDark}
+          alt="FindSnowAI Logo"
+          className="logo-img dark"
+        />
+        <nav className="welcome-box">
+          <p className="welcome-title">
+            Find Snow Challenge
+          </p>
+          <p className="welcome-desc">
+            You love long days on nordic skis? You are excited about trying out new tracks? We have just the right challenge for you this winter.<br /><br />
+            How will it work?
+          </p>
+          <ol className="numbered-list">
+            <li>Connect your Strava account.</li>
+            <li>Go skiing! For the entire season, only your longest activity will count per skiing area.</li>
+            <li>Check back regularly to see where you are on the leaderboard.</li>
+          </ol>
+          <p className="welcome-desc">
+            Sign up below to get notified when we launch.
+          </p>
+          <form className="welcome-form" onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Your email address"
+              className="welcome-input"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
             />
-            <img
-              src={logoDark}
-              alt="React Router"
-              className="hidden w-full dark:block"
-            />
-          </div>
-        </header>
-        <div className="max-w-[500px] w-full space-y-2 px-2">
-          <nav className="welcome-box">
-            <p className="leading-16 text-gray-700 dark:text-gray-200 text-center font-semibold text-lg">
-              Coming Soon!
-            </p>
-            <p className="text-gray-600 dark:text-white text-left mb-4">
-              You love long days on nordic skis? You are excited about trying out new tracks? We have just the right challenge for you
-              this winter. How will it work?
-            
-              <br />
-              <ol className="numbered-list">
-                <li>Connect your Strava account.</li>
-                <li>Go Skiing. For the entire season only your longest activity will count, per skiing area.</li>
-                <li>Check back regularly to see where you are on the leaderboard.</li>
-              </ol>
-              <br />
-              Sign up below to get notified when we launch.
-            </p>
-            <form className="flex flex-col gap-2 items-center" onSubmit={handleSubmit}>
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="border border-gray-300 rounded px-3 py-2 w-full bg-white/80 dark:bg-gray-800/80"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-              />
-              <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-              >
-                Sign Up
-              </button>
-            </form>
-            {status && (
-              <p className="text-center text-green-600 dark:text-green-400">{status}</p>
-            )}
+            <button
+              type="submit"
+              className="welcome-btn"
+            >
+              Sign Up
+            </button>
+          </form>
+          {status && (
+            <p className="welcome-status">{status}</p>
+          )}
+          {message && (
             <ul>
-              <li className="self-stretch p-3 leading-normal">{message}</li>
+              <li className="welcome-message">{message}</li>
             </ul>
-          </nav>
-        </div>
+          )}
+        </nav>
       </div>
       <link rel="icon" href="/favicon.ico" />
     </main>
