@@ -1,5 +1,5 @@
 name = "findsnowai"
-main = "workers/worker.ts"
+main = "workers/app.ts"
 compatibility_date = "2024-06-01"
 
 [[d1_databases]]
