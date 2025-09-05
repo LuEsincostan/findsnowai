@@ -1,0 +1,8 @@
+name = "findsnowai"
+main = "workers/worker.ts"
+compatibility_date = "2024-06-01"
+
+[[d1_databases]]
+binding = "DB"
+database_id = "97649592-74a0-463a-844b-aaa7f79c9edf"
+database_name = "findsnowai_db"

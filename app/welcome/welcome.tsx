@@ -1,7 +1,23 @@
+import React, { useState } from "react";
 import logoDark from "./finsnowai_dark_txt.svg";
 import logoLight from "./finsnowai_light_txt.svg";
 
 export function Welcome({ message }: { message: string }) {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<null | string>(null);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus(null);
+    const res = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    if (res.ok) setStatus("Thank you for signing up!");
+    else setStatus("Invalid email or error. Try again.");
+  }
+
   return (
     <main className="flex items-center justify-center pt-16 pb-4">
       <div className="flex-1 flex flex-col items-center gap-4 min-h-0">
@@ -29,21 +45,25 @@ export function Welcome({ message }: { message: string }) {
               this winter.
               Sign up below to get notified when we launch.
             </p>
-            <form className="flex flex-col gap-2 items-center">
+            <form className="flex flex-col gap-2 items-center" onSubmit={handleSubmit}>
               <input
                 type="email"
                 placeholder="Your email address"
                 className="border border-gray-300 rounded px-3 py-2 w-full bg-white/80 dark:bg-gray-800/80"
-                disabled
+                value={email}
+                onChange={e => setEmail(e.target.value)}
+                required
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded opacity-50 cursor-not-allowed"
-                disabled
+                className="bg-blue-500 text-white px-4 py-2 rounded"
               >
-                Sign Up (Coming Soon)
+                Sign Up
               </button>
             </form>
+            {status && (
+              <p className="text-center text-green-600 dark:text-green-400">{status}</p>
+            )}
             <ul>
               <li className="self-stretch p-3 leading-normal">{message}</li>
             </ul>
