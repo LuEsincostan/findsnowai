@@ -41,7 +41,7 @@ export function Welcome({ message }: { message: string }) {
             How will it work?
           </p>
           <ol className="numbered-list">
-            <li>Connect your Strava account.</li>
+            <li>You connect your Strava account.</li>
             <li>Go skiing! For the entire season, only your longest activity will count per skiing area.</li>
             <li>Check back regularly to see where you are on the leaderboard.</li>
           </ol>

@@ -6,9 +6,9 @@
 }
 
 .numbered-list li {
-  margin-bottom: 0.5em; /* adds space below each item */
-  background: rgba(0,0,0,0.04); /* optional: subtle background */
-  padding: 0.25em 0.5em;        /* space behind text */
+  margin-bottom: 0.5em;
+  background: none; /* removes background */
+  padding: 0.25em 0.5em;
   border-radius: 4px;           /* optional: rounded corners */
 }
 
