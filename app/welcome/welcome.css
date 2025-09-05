@@ -36,6 +36,7 @@
   font-size: 1.05em;
   line-height: 1.7;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .welcome-container, .welcome-box {
@@ -52,20 +53,72 @@
   padding: 1em;
 }
 
+/* Desktop: everything fits on a single page, no scroll */
+@media (min-width: 601px) {
+  html, body, .welcome-main {
+    min-height: 100vh;
+    height: auto;
+    overflow-y: auto;
+  }
+  .welcome-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    padding-top: 2em;
+    padding-bottom: 2em; /* adds space at the bottom */
+  }
+  .welcome-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: block;
+  }
+  .welcome-box {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 1.15em;
+    box-sizing: border-box;
+  }
+}
+
+/* Mobile: allow vertical scrolling */
+@media (max-width: 600px) {
+  .welcome-main {
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .home-background {
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 .welcome-container {
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  min-height: 30vh; /* ensures container is at least 30% of viewport height */
+  padding-top: 2em; /* moves logo further up */
 }
 
 .logo-img {
-  width: 200px;      /* increased from 160px */
-  margin-bottom: 1.5em;
-  display: none;
+  height: 180px;
+  width: 360px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 0.7em;
 }
+
 .logo-img.light {
   display: block;
 }
@@ -134,16 +187,32 @@
 }
 
 @media (max-width: 600px) {
+  .welcome-main,
   .welcome-container {
-    max-width: 98vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100vw;
     padding: 0;
   }
+  .welcome-container {
+    width: 100%;
+    max-width: 100vw;
+    padding: 0 1em;      /* adds margin on left and right */
+    box-sizing: border-box;
+  }
   .welcome-box {
-    padding: 1em 0.5em;
+    width: 100%;
+    margin: 0;
     font-size: 1em;
+    box-sizing: border-box;
   }
   .logo-img {
-    width: 150px;    /* increased from 120px for mobile */
-    margin-bottom: 1em;
+    height: 120px;
+    width: 220px;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 0.7em;
   }
 }

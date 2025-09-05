@@ -1,13 +1,26 @@
 .home-background {
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  /* Replace with your image path */
-  background: 
-    url('/snow_background.jpg') center center / cover no-repeat;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  background: url('/snow_background.jpg') left center / cover no-repeat;
+  font-family: 'Open Sans', Arial, sans-serif;
   background-blend-mode: overlay;
+}
+
+/* Desktop: center the background */
+@media (min-width: 600px) {
+  .home-background {
+    background-position: center center;
+    justify-content: center;
+  }
+}
+
+/* Mobile: offset background slightly from center */
+@media (max-width: 600px) {
+  .home-background {
+    background-position: 40% center; /* moves image 30% from the left */
+  }
 }
 
 .welcome-footer {

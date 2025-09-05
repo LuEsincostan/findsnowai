@@ -21,17 +21,17 @@ export function Welcome({ message }: { message: string }) {
 
   return (
     <main className="welcome-main">
+      <img
+        src={logoLight}
+        alt="FindSnowAI Logo"
+        className="logo-img light"
+      />
+      <img
+        src={logoDark}
+        alt="FindSnowAI Logo"
+        className="logo-img dark"
+      />
       <div className="welcome-container">
-        <img
-          src={logoLight}
-          alt="FindSnowAI Logo"
-          className="logo-img light"
-        />
-        <img
-          src={logoDark}
-          alt="FindSnowAI Logo"
-          className="logo-img dark"
-        />
         <nav className="welcome-box">
           <p className="welcome-title">
             Find Snow Challenge 2025/26
@@ -95,7 +95,6 @@ export function Welcome({ message }: { message: string }) {
           )}
         </nav>
       </div>
-      <link rel="icon" href="/favicon.ico" />
     </main>
   );
 }
