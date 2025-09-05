@@ -1,0 +1,32 @@
+.numbered-list {
+  list-style-type: decimal; /* ensures numbers are shown */
+  padding-left: 2em; /* increases space between numbers and text */
+}
+
+.numbered-list li {
+  margin-bottom: 0.5em; /* adds space below each item */
+  background: rgba(0,0,0,0.05); /* optional: subtle background */
+  padding: 0.25em 0.5em;        /* space behind text */
+  border-radius: 4px;           /* optional: rounded corners */
+  text-align: left;         /* left-aligns each item */
+}
+
+.welcome-box {
+  background: rgba(30, 29, 29, 0.85);
+  color: #232222;
+  padding: 2em 1.5em;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  font-size: 1.15em;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.welcome-main {
+  min-height: 100vh;
+  padding-top: 3em;
+  padding-left: 2em;
+  display: block; /* avoid flex pushing content */
+}

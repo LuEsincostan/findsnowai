@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logoDark from "./finsnowai_dark_txt.svg";
 import logoLight from "./finsnowai_light_txt.svg";
+import "./welcome.css";
 
 export function Welcome({ message }: { message: string }) {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ export function Welcome({ message }: { message: string }) {
   }
 
   return (
-    <main className="flex items-center justify-center pt-16 pb-4">
+    <main className="welcome-main">
       <div className="flex-1 flex flex-col items-center gap-4 min-h-0">
         <header className="flex flex-col items-center gap-4">
           <div className="w-[500px] max-w-[100vw] p-4">
@@ -36,13 +37,21 @@ export function Welcome({ message }: { message: string }) {
           </div>
         </header>
         <div className="max-w-[500px] w-full space-y-2 px-2">
-          <nav className="rounded-3xl border border-gray-200 p-6 dark:border-gray-700 space-y-4 bg-white/70 dark:bg-gray-900/70 shadow-lg">
-            <p className="leading-6 text-gray-700 dark:text-gray-200 text-center font-semibold text-lg">
+          <nav className="welcome-box">
+            <p className="leading-16 text-gray-700 dark:text-gray-200 text-center font-semibold text-lg">
               Coming Soon!
             </p>
-            <p className="text-gray-600 dark:text-white text-center mb-4">
+            <p className="text-gray-600 dark:text-white text-left mb-4">
               You love long days on nordic skis? You are excited about trying out new tracks? We have just the right challenge for you
-              this winter.
+              this winter. How will it work?
+            
+              <br />
+              <ol className="numbered-list">
+                <li>Connect your Strava account.</li>
+                <li>Go Skiing. For the entire season only your longest activity will count, per skiing area.</li>
+                <li>Check back regularly to see where you are on the leaderboard.</li>
+              </ol>
+              <br />
               Sign up below to get notified when we launch.
             </p>
             <form className="flex flex-col gap-2 items-center" onSubmit={handleSubmit}>
