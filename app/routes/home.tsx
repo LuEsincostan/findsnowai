@@ -1,17 +1,22 @@
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import "./home.css";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
-    { name: "description", content: "Welcome to React Router!" },
+    { title: "Find Snow" },
+    { name: "description", content: "Welcome to the game!" },
   ];
 }
 
-export function loader({ context }: Route.LoaderArgs) {
-  return { message: context.cloudflare.env.VALUE_FROM_CLOUDFLARE };
+export function loader({}: Route.LoaderArgs) {
+  return { message: "" };
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
-  return <Welcome message={loaderData.message} />;
+  return (
+    <div className="home-background">
+      <Welcome message={loaderData.message} />
+    </div>
+  );
 }
