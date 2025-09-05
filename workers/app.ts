@@ -17,10 +17,6 @@ const requestHandler = createRequestHandler(
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
-    if (url.pathname === "/favicon.ico") {
-      // Serve the favicon from your assets
-      return fetch("/favicon.ico", request);
-    }
     if (request.method === "POST" && url.pathname === "/api/subscribe") {
       try {
         const { email } = await request.json();
@@ -33,7 +29,7 @@ export default {
         return new Response("Worker error: " + (err?.message || err), { status: 500 });
       }
     }
-    // All other requests go to your app
+    // All requests (including /favicon.ico) go to your app
     return requestHandler(request, {
       cloudflare: { env, ctx },
     });
