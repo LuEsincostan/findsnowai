@@ -70,6 +70,7 @@ export function Welcome({ message }: { message: string }) {
           </nav>
         </div>
       </div>
+      <link rel="icon" href="/favicon.ico" />
     </main>
   );
 }
