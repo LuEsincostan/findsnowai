@@ -17,6 +17,10 @@ const requestHandler = createRequestHandler(
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === "/favicon.ico") {
+      // Serve the favicon from your assets
+      return fetch("/favicon.ico", request);
+    }
     if (request.method === "POST" && url.pathname === "/api/subscribe") {
       try {
         const { email } = await request.json();
