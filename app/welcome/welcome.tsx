@@ -54,50 +54,23 @@ export function Welcome({ message }: { message: string }) {
               <div className="welcome-steps-row">
                 <div className="welcome-step-box">
                   <span className="welcome-step-title">
-                    <span className="hex-number" style={{ position: "relative" }}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="rgba(255,255,255,0.2)"
-                        style={{ filter: "drop-shadow(0 2px 6px rgba(255,255,255,0.9))" }}
-                      >
-                        <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
-                      </svg>
-                      <span className="hex-number-text">1</span>
-                    </span>
+                    <img src="/sign-up.svg" alt="Sign Up" className="hex-icon" />
                   </span>
                   <p className="welcome-step-desc">
-                    Sign up and connect your Strava account.
+                    Connect your Strava account.
                   </p>
                 </div>
                 <div className="welcome-step-box">
                   <span className="welcome-step-title">
-                    <span className="hex-number" style={{ position: "relative" }}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="rgba(255,255,255,0.2)"
-                        style={{ filter: "drop-shadow(0 2px 6px rgba(255,255,255,0.9))" }}
-                      >
-                        <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
-                      </svg>
-                      <span className="hex-number-text">2</span>
-                    </span>
+                    <img src="/ski.svg" alt="Ski" className="hex-icon" />
                   </span>
                   <p className="welcome-step-desc">
-                    Go skiing! For the entire season, only your longest activity will count for each skiing area.
+                    Go skiing! For the entire season, only your longest activity will count per skiing area.
                   </p>
                 </div>
                 <div className="welcome-step-box">
                   <span className="welcome-step-title">
-                    <span className="hex-number" style={{ position: "relative" }}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="rgba(255,255,255,0.2)"
-                        style={{ filter: "drop-shadow(0 2px 6px rgba(255,255,255,0.9))" }}
-                      >
-                        <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" />
-                      </svg>
-                      <span className="hex-number-text">3</span>
-                    </span>
+                    <img src="/leaderboard.svg" alt="Leaderboard" className="hex-icon" />
                   </span>
                   <p className="welcome-step-desc">
                     Check back regularly to see where you are on the leaderboard.
