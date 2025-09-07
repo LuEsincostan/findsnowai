@@ -108,9 +108,6 @@ export function Welcome({ message }: { message: string }) {
                   </button>
                 </form>
               )}
-              {status && (
-                <p className="welcome-status">{status}</p>
-              )}
               {message && (
                 <ul>
                   <li className="welcome-message">{message}</li>
