@@ -1,6 +1,4 @@
 import { createRequestHandler } from "react-router";
-import { json } from '@remix-run/node';
-import type { ActionFunction } from '@remix-run/node';
 
 declare module "react-router" {
   export interface AppLoadContext {
@@ -16,48 +14,22 @@ const requestHandler = createRequestHandler(
   import.meta.env.MODE,
 );
 
-export const action: ActionFunction = async ({ request }) => {
-  // Add CORS headers to all responses
-  const headers = {
-    'Access-Control-Allow-Origin': 'https://findsnow.ai',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  };
-
-  // Handle preflight OPTIONS request
-  if (request.method === 'OPTIONS') {
-    return new Response(null, { headers });
-  }
-
-  if (request.method === 'POST') {
-    try {
-      const data = await request.json();
-      const { email } = data;
-      if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-        return json({ error: 'Invalid email' }, { 
-          status: 400,
-          headers 
-        });
-      }
-      await env.DB.prepare("INSERT INTO emails (email) VALUES (?)").bind(email).run();
-      return json({ success: true }, { headers });
-    } catch (error) {
-      return json({ error: 'Failed to process signup' }, { 
-        status: 400,
-        headers 
-      });
-    }
-  }
-
-  return json({ error: 'Method not allowed' }, { 
-    status: 405,
-    headers 
-  });
-};
-
-// All requests (including /favicon.ico) go to your app
 export default {
   async fetch(request, env, ctx) {
+    const url = new URL(request.url);
+    if (request.method === "POST" && url.pathname === "/api/subscribe") {
+      try {
+        const { email } = await request.json();
+        if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+          return new Response("Invalid email", { status: 400 });
+        }
+        await env.DB.prepare("INSERT INTO emails (email) VALUES (?)").bind(email).run();
+        return new Response("OK");
+      } catch (err) {
+        return new Response("Worker error: " + (err?.message || err), { status: 500 });
+      }
+    }
+    // All requests (including /favicon.ico) go to your app
     return requestHandler(request, {
       cloudflare: { env, ctx },
     });
