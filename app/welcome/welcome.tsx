@@ -10,14 +10,29 @@ export function Welcome({ message }: { message: string }) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus(null);
-    const res = await fetch("https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-      credentials: "include" // important!
-    });
-    if (res.ok) setStatus("Thank you for signing up!");
-    else setStatus("Invalid email or error. Try again.");
+    
+    try {
+      const response = await fetch('https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        credentials: 'include', // Required for Cloudflare Access
+        body: JSON.stringify({ email })
+      });
+      
+      if (response.ok) {
+        setStatus('Thank you for signing up!');
+        setEmail('');
+      } else {
+        const error = await response.json();
+        setStatus(error.message || 'Signup failed. Please try again.');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      setStatus('Network error. Please try again.');
+    }
   }
 
   return (
