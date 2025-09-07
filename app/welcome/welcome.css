@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
 
+:root {
+  --text-color: #ffffff;
+}
+
 body,
 .welcome-main,
 .welcome-container,
@@ -16,6 +20,17 @@ body,
 .welcome-btn {
   color: #222;
   font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* Force text color to white everywhere */
+html,
+body,
+.welcome-main,
+.welcome-container,
+.welcome-box,
+.welcome-box * {
+  color: var(--text-color) !important;
+  -webkit-text-fill-color: var(--text-color) !important;
 }
 
 .numbered-list {
@@ -49,7 +64,7 @@ body,
 
 .welcome-box {
   background: linear-gradient(135deg, #ffffffc5 0%, #5078b5d7 100%);
-  color: #222;
+  color: #ffffff;
   padding: 1.5em 1em;
   border-radius: 16px;
   box-shadow: 0 6px 24px rgba(0,0,0,0.18);
@@ -133,8 +148,8 @@ body,
 
 .logo-img {
   display: block;
-  width: 160px;
-  height: 48px;
+  width: 320px;
+  height: 160px;
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.7em;
