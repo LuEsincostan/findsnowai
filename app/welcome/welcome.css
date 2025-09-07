@@ -14,6 +14,7 @@ body,
 .welcome-form,
 .welcome-input,
 .welcome-btn {
+  color: #222;
   font-family: 'Montserrat', Arial, sans-serif;
 }
 
@@ -131,8 +132,9 @@ body,
 }
 
 .logo-img {
-  width: 260px;
-  height: 160px; /* cropped height */
+  display: block;
+  width: 160px;
+  height: 48px;
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.7em;
