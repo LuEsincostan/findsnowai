@@ -29,6 +29,7 @@ export default {
         return new Response("Worker error: " + (err?.message || err), { status: 500 });
       }
     }
+    // All other requests go to your app
     // All requests (including /favicon.ico) go to your app
     return requestHandler(request, {
       cloudflare: { env, ctx },

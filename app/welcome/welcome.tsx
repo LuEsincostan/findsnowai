@@ -15,8 +15,8 @@ export function Welcome({ message }: { message: string }) {
       const response = await fetch('https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe', {
         method: 'POST',
         headers: {
-          'accept': '*/*',
-          'content-type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': '*/*'
         },
         mode: 'cors',
         credentials: 'omit',
@@ -27,7 +27,8 @@ export function Welcome({ message }: { message: string }) {
         setStatus('Thank you for signing up!');
         setEmail('');
       } else {
-        setStatus('Signup failed. Please try again.');
+        const errorData = await response.json().catch(() => null);
+        setStatus(errorData?.message || 'Signup failed. Please try again.');
       }
     } catch (error) {
       console.error('Signup error:', error);
