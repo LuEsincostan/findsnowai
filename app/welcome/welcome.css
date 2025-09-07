@@ -1,3 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+body,
+.welcome-main,
+.welcome-container,
+.welcome-box,
+.welcome-title,
+.welcome-desc,
+.welcome-step-box,
+.welcome-step-title,
+.welcome-step-desc,
+.welcome-status,
+.welcome-message,
+.welcome-form,
+.welcome-input,
+.welcome-btn {
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
 .numbered-list {
   list-style: none; /* remove default numbers */
   padding-left: 0;
@@ -46,11 +65,11 @@
 
 .welcome-main {
   min-height: 100vh;
-  background: none;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 1em;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
 }
 
 /* Desktop: everything fits on a single page, no scroll */
@@ -117,6 +136,8 @@
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.7em;
+  position: relative;
+  z-index: 10;
 }
 
 .logo-img.light {
@@ -163,26 +184,27 @@
 .welcome-btn {
   padding: 0.5em 1em;
   border-radius: 6px;
-  background: #1976d2;
-  color: #fff;
+  background: #ffffff;
+  color: #113766;
   border: none;
   font-size: 1em;
   cursor: pointer;
   transition: background 0.2s;
+  margin-bottom: 1.5em; /* ensures space below the signup button */
 }
 .welcome-btn:hover {
-  background: #1565c0;
+  background: #3f8ae7;
 }
 
 .welcome-status {
   color: #388e3c;
-  text-align: left;
+  text-align: center;
   margin-bottom: 0.5em;
 }
 
 .welcome-message {
   color: #222;
-  text-align: left;
+  text-align: center;
   margin-bottom: 0.5em;
 }
 
@@ -215,4 +237,103 @@
     object-position: center;
     margin-bottom: 0.7em;
   }
+}
+
+.welcome-steps-row {
+  display: flex;
+  gap: 2em;
+  justify-content: space-between;
+  margin-bottom: 1.5em;
+}
+
+.welcome-step-box {
+  background: rgba(255,255,255,0.95);
+  color: #05182b;
+  padding: 1em;
+  box-sizing: border-box;
+  min-width: 180px;
+  flex: 1 1 0;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.welcome-step-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+.hex-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  margin-right: 0.5em;
+}
+
+.hex-number svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hex-number-text {
+  position: absolute;
+  font-weight: light;
+  font-size: 1.1em;
+  color: #fff; /* make the hex number white */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.welcome-step-desc {
+  font-size: 1em;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .welcome-steps-row {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .welcome-step-box {
+    min-width: 0; /* allow to shrink */
+    width: 100%; /* full width on small screens */
+  }
+}
+
+.welcome-box,
+.welcome-step-box,
+.welcome-title,
+.welcome-desc,
+.welcome-status,
+.welcome-message {
+  background: none !important;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+.welcome-footer {
+  width: 100%;
+  text-align: center;
+  padding: 1em 0;
+  position: relative;
+  z-index: 20;
+}
+
+.welcome-title,
+.welcome-desc,
+.welcome-status,
+.welcome-message,
+.welcome-step-box,
+.welcome-step-title,
+.welcome-step-desc,
+.numbered-list,
+.welcome-box,
+.welcome-container {
+  text-align: center;
 }
