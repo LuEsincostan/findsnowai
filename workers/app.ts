@@ -1,6 +1,4 @@
 import { createRequestHandler } from "react-router";
-import { json } from "@remix-run/node";
-import type { ActionFunction } from "@remix-run/node";
 
 declare module "react-router" {
   export interface AppLoadContext {
@@ -37,48 +35,3 @@ export default {
     });
   },
 } satisfies ExportedHandler<Env>;
-
-export const action: ActionFunction = async ({ request }) => {
-  // Handle CORS for preflight
-  if (request.method === "OPTIONS") {
-    return new Response(null, {
-      headers: {
-        "Access-Control-Allow-Origin": "https://findsnow.ai",
-        "Access-Control-Allow-Methods": "POST",
-        "Access-Control-Allow-Headers": "Content-Type",
-        "Access-Control-Max-Age": "86400",
-      },
-    });
-  }
-
-  // Handle POST request
-  if (request.method === "POST") {
-    try {
-      const data = await request.json();
-      // ...your existing email signup logic...
-
-      return json(
-        { success: true },
-        {
-          headers: {
-            "Access-Control-Allow-Origin": "https://findsnow.ai",
-            "Access-Control-Allow-Methods": "POST",
-            "Access-Control-Allow-Headers": "Content-Type",
-          },
-        },
-      );
-    } catch (error) {
-      return json(
-        { error: "Failed to process signup" },
-        {
-          status: 400,
-          headers: {
-            "Access-Control-Allow-Origin": "https://findsnow.ai",
-            "Access-Control-Allow-Methods": "POST",
-            "Access-Control-Allow-Headers": "Content-Type",
-          },
-        },
-      );
-    }
-  }
-};
