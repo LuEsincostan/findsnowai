@@ -15,6 +15,7 @@ export function Welcome({ message }: { message: string }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email }),
+      credentials: "include" // important!
     });
     if (res.ok) setStatus("Thank you for signing up!");
     else setStatus("Invalid email or error. Try again.");
