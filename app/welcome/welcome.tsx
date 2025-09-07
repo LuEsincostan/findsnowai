@@ -12,13 +12,11 @@ export function Welcome({ message }: { message: string }) {
     setStatus(null);
     
     try {
-      const response = await fetch('https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+          'Content-Type': 'application/json'
         },
-        credentials: 'include', // Required for Cloudflare Access
         body: JSON.stringify({ email })
       });
       
@@ -26,8 +24,7 @@ export function Welcome({ message }: { message: string }) {
         setStatus('Thank you for signing up!');
         setEmail('');
       } else {
-        const error = await response.json();
-        setStatus(error.message || 'Signup failed. Please try again.');
+        setStatus('Signup failed. Please try again.');
       }
     } catch (error) {
       console.error('Signup error:', error);
