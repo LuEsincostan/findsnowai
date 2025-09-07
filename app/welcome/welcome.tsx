@@ -93,11 +93,12 @@ export function Welcome({ message }: { message: string }) {
                 <form className="welcome-form" onSubmit={handleSubmit}>
                   <input
                     type="email"
-                    placeholder="Your email address"
+                    placeholder={status ? status : "Your email address"}
                     className="welcome-input"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     required
+                    style={status ? { color: "#fff", background: "#1976d2" } : {}}
                   />
                   <button
                     type="submit"
