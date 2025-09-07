@@ -15,8 +15,8 @@ export function Welcome({ message }: { message: string }) {
       const response = await fetch('https://findsnowai.ludwig-ehlert.workers.dev/api/subscribe', {
         method: 'POST',
         headers: {
-          'Accept': '*/*',
-          'Content-Type': 'application/json'
+          'accept': '*/*',
+          'content-type': 'application/json'
         },
         mode: 'cors',
         credentials: 'omit',
