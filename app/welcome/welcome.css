@@ -131,18 +131,20 @@ body,
 }
 
 .logo-img {
-  height: 180px;
-  width: 360px;
+  width: 260px;
+  height: 160px; /* cropped height */
   object-fit: cover;
   object-position: center;
   margin-bottom: 0.7em;
   position: relative;
-  z-index: 10;
+  z-index: 100;
+  overflow: hidden;
 }
 
 .logo-img.light {
   display: block;
 }
+
 @media (prefers-color-scheme: dark) {
   .logo-img.light {
     display: none;
